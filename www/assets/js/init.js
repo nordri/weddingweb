@@ -67,24 +67,4 @@
 		}
 	});
 
-	$(function() {
-
-		$('body.contactus form').submit(function(event) {
-			event.preventDefault();
-
-			var $form = $(this);
-
-			$.post(location.href, {
-				name: $form.find("input[name='name']").val(),
-				email: $form.find("input[name='email']").val(),
-				content: $form.find("textarea[name='content']").val()
-			}).done(function(data) {
-				$form.replaceWith("<p>Message sent</p>");
-			}).fail(function(data) {
-				$form.replaceWith("<p>Error: "+data.error+"</p>");
-			})
-		});
-
-	});
-
 })(jQuery);
