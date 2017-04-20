@@ -1,0 +1,16 @@
+# Creating container image
+docker build -t weddingweb .
+
+# Launching the image (testing)
+docker run -ti --rm -p 80:80 weddingweb
+
+# Launching the image (production)
+Mind the volume!
+So first build the image
+then start the container as usual
+docker run -d -p 8081:80 -v /opt/dockerapps/weddingweb/www:/usr/share/nginx/html --name weddingweb weddingweb
+
+and then you can do systemctl start docker-container@weddingweb
+
+Follow this steps to add containers as system services
+https://docs.docker.com/engine/admin/host_integration/#systemd
